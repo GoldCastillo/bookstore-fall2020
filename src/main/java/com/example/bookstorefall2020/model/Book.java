@@ -12,6 +12,10 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 public class Book {
 
+	/*
+	 * @Id Specifies the primary key of an entity
+	 * @GeneratedValue Provides for the specification of generation strategies for thevalues of primary keys
+	 */
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -21,6 +25,14 @@ public class Book {
 	private String isbn;
 	private double price;
 
+	
+	/*
+	 * @ManyToOne Specifies a single-valued association to another entity class thathas many-to-one multiplicity
+	 * @JoinColumn Specifies a column for joining an entity association or elementcollection
+	 * Annotation used to indicate that annotated property is part oftwo-way linkage between fields; 
+	 * and that its role is "parent" (or "forward") link.Value type (class) of property must have a single 
+	 * compatible property annotated with JsonBackReference
+	 */
 	@ManyToOne
 	@JoinColumn(name = "categoryid")
 	@JsonManagedReference
